@@ -31,12 +31,6 @@ $(function(){
 });
 
 
-
-
-
-
-
-
 var validate = function(objectForValidate){
 	if (typeof objectForValidate.value != "undefined"){
 		var stringForValidate = objectForValidate.value;

@@ -1,6 +1,6 @@
-var calculateSequences = function() {
-		var Sequence1 = $("#firstSequence").val();
-		var Sequence2 = $("#secondSequence").val();
+var calculateSequences = function(firstSequence, secondSequence) {
+		var Sequence1 = firstSequence;
+		var Sequence2 = secondSequence;
 		var SequanceArray1 = [];
 		var SequanceArray2 = [];
 		
