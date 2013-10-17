@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Порівняння послідовностей</title>
+		<link rel = "stylesheet"  href="formstyle.css" media="all">
+	</head>
+
+	<body>
+
+		<div id="title">
+			<h1>Command Project</h1>
+		</div>
+
+		<div id="mainBlock" class="all">
+			
+			<ul class="tabs">
+            	<li><a href="" id="tab_1">Загальна інформація</a></li>
+            	<li><a href="" id="tab_2">Порівняння послідовностей</a></li>           
+        	</ul><br>
+
+			<fieldset class = "Input">
+				
+				<div class = "inputBlock">
+					<p>Введіть першу послідовність</p>
+					<input id="firstSequence" type="text">
+					<p>Введіть другу послідовність</p>
+					<input id="secondSequence" type="text">
+				</div>
+				<div class = "inputBlock">
+					<p>Оберіть алгоритм вирівнювання</p>
+					<select>
+  						<option selected disabled name="">Алгоритм</option>
+  						<option value="global">Глобальне вирівнювання</option>
+  						<option disabled value="local">Локальне вирівнювання</option>
+  						<option value="pseudo">Псевдоглобальне вирівнювання</option>
+					</select><br>
+				</div>
+				<button id="showResults">OK</button>
+			</fieldset>
+
+			<fieldset class = "Result">
+				<caption>Результат порівняння</caption>
+				<p class = "ResultString"></p>
+				<p class = 'ResultString'></p> <br>
+				<button id="click">Детальніше</button>
+			</fieldset>		
+
+			<fieldset class = "Matrix">
+				<p>Матриці ваг префіксів та шляху</p>
+				<table class = "ResultsTable"></table> <br>
+				<table class = "ResultsTable"></table>
+			</fieldset>	<br>	
+		</div>
+
+		<div id="empty"></div>
+
+		<footer>Copyright</footer>
+		
+		<!-- scripts -->
+		<script type="text/javascript" src = "jquery-2.0.2.min.js"></script>
+		<script type = "text/javascript" src = "globalAlignment.js"></script>
+		<script type = "text/javascript" src = "pseudoGlobalAlignment.js"></script>
+		<script type = "text/javascript" src = "scripts.js"></script>
+	</body>
+</html>
+
+
+				
