@@ -103,3 +103,6 @@ var tableGeneration =  function(table) {
 	}
 	return innerText;
 }
+var doAllClear = function() {
+	location,reload();
+}
