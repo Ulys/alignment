@@ -1,5 +1,5 @@
 //Global Alignment
-
+//new comment
 var doGlobalAlignment = function(firstSequence, secondSequence, tableOutput, stringOutput) { 
 	var table = initializeTable(firstSequence, secondSequence);
 	var way   = initializeTable(firstSequence, secondSequence);	
