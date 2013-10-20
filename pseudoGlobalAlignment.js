@@ -3,11 +3,6 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, tableOutpu
 	var sequence2 = secondSequence;
 	var sequenceArray1 = [];
 	var sequenceArray2 = [];
-	// sequenceArray1 = sequence1.split('');
-	// sequenceArray1.unshift('_');
-	// sequenceArray1.unshift("Symbols");
-	// sequenceArray2 = sequence2.split('');
-	// sequenceArray2.unshift('_');
 	var subSeqMatrix = initializeTable (firstSequence, secondSequence);
 	var wayMatrix = initializeTable (firstSequence, secondSequence);
 	//Ініціюємо перший рядок і стовпець матриць
