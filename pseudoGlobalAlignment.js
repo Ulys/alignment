@@ -1,75 +1,73 @@
-var calculateSequences = function(firstSequence, secondSequence) {
-		var Sequence1 = firstSequence;
-		var Sequence2 = secondSequence;
-		var SequanceArray1 = [];
-		var SequanceArray2 = [];
-		
-		SequanceArray1 = Sequence1.split('');
-		SequanceArray1.unshift('_');
-		SequanceArray1.unshift("Symbols");
-		SequanceArray2 = Sequence2.split('');
-		SequanceArray2.unshift('_');
-
-		var SubSeqMatrix = matrixGenerate (SequanceArray1, SequanceArray2);
-		var WayMatrix = matrixGenerate (SequanceArray1, SequanceArray2);
-		
-		//Ініціюємо перший рядок і стовпець матриць
-		for (var i = 1; i < Sequence2.length+2; i++) {
-			for (var j = 1; j < Sequence1.length+2; j++) {
-				if (i==1) {
-					SubSeqMatrix[i][j]=0; 
-					WayMatrix[i][j]='left'
-				} 
-				else if (i>1 && j==1) {
-					SubSeqMatrix[i][j]=0; 
-					WayMatrix[i][j]='up'
-				}; 
-			};
+var doPseudoGlobalAlignment = function(firstSequence, secondSequence, tableOutput, stringOutput) {
+	var sequence1 = firstSequence;
+	var sequence2 = secondSequence;
+	var sequenceArray1 = [];
+	var sequenceArray2 = [];
+	// sequenceArray1 = sequence1.split('');
+	// sequenceArray1.unshift('_');
+	// sequenceArray1.unshift("Symbols");
+	// sequenceArray2 = sequence2.split('');
+	// sequenceArray2.unshift('_');
+	var subSeqMatrix = initializeTable (firstSequence, secondSequence);
+	var wayMatrix = initializeTable (firstSequence, secondSequence);
+	//Ініціюємо перший рядок і стовпець матриць
+	for (var i = 1; i < sequence2.length+2; i++) {
+		for (var j = 1; j < sequence1.length+2; j++) {
+			if (i==1) {
+				subSeqMatrix[i][j]=0; 
+				wayMatrix[i][j]='left'
+			} 
+			else if (i>1 && j==1) {
+				subSeqMatrix[i][j]=0; 
+				wayMatrix[i][j]='up'
+			}; 
 		};
-
-		//Розраховуємо матрицю ваг-префіксів
-		for (var i = 2; i < Sequence2.length+2; i++) {
-			for (var j = 2; j < Sequence1.length+2; j++) {
-				var first = SubSeqMatrix[i-1][j]-2;
-				if (SequanceArray1[j]==SequanceArray2[i-1]) {
-					var second = SubSeqMatrix[i-1][j-1]+1
-				} 
-				else {
-					var second = SubSeqMatrix[i-1][j-1]-1
-				};
-				var third = SubSeqMatrix[i][j-1]-2;
-				SubSeqMatrix[i][j] = Math.max(first,second,third);
-		       //Паралельно заповнимо матрицю шляху       
-			    if (SubSeqMatrix[i][j] == first) {WayMatrix[i][j] = 'up'};
-			    if (SubSeqMatrix[i][j] == third) {WayMatrix[i][j] = 'left'};
-			    if (SubSeqMatrix[i][j] == second) {WayMatrix[i][j] = 'diag'};	
-
+	};
+	//Розраховуємо матрицю ваг-префіксів
+	for (var i = 2; i < sequence2.length+2; i++) {
+		for (var j = 2; j < sequence1.length+2; j++) {
+			var first = subSeqMatrix[i-1][j]-2;
+			if (sequenceArray1[j]==sequenceArray2[i-1]) {
+				var second = subSeqMatrix[i-1][j-1]+1
+			} 
+			else {
+				var second = subSeqMatrix[i-1][j-1]-1
 			};
-		};        		
-		// Побудова вирівнювання
-		var ResultSequence1 = '';
-		var ResultSequence2 = '';
-		var i = WayMatrix.length;
-		var j = WayMatrix[0].length;
-		while (i>1 && j>1) {
-			if (WayMatrix[i-1][j-1] == 'up') {
-				ResultSequence1 = '_' + ResultSequence1;
-				ResultSequence2 = WayMatrix[i-1][0] + ResultSequence2;
-				i = i - 1;
+			var third = subSeqMatrix[i][j-1]-2;
+			subSeqMatrix[i][j] = Math.max(first,second,third);
+	       //Паралельно заповнимо матрицю шляху       
+		    if (subSeqMatrix[i][j] == first) {wayMatrix[i][j] = 'up'};
+		    if (subSeqMatrix[i][j] == third) {wayMatrix[i][j] = 'left'};
+		    if (subSeqMatrix[i][j] == second) {wayMatrix[i][j] = 'diag'};	
+		};
+	};        		
+	// Побудова вирівнювання
+	var resultSequence1 = '';
+	var resultSequence2 = '';
+	var i = wayMatrix.length;
+	var j = wayMatrix[0].length;
+	while (i>1 && j>1) {
+		if (wayMatrix[i-1][j-1] == 'up') {
+			resultSequence1 = '_' + resultSequence1;
+			resultSequence2 = wayMatrix[i-1][0] + resultSequence2;
+			i = i - 1;
+		}
+		else {
+			if (wayMatrix[i-1][j-1] == 'left') {
+				resultSequence1 = wayMatrix[0][j-1] + resultSequence1;
+				resultSequence2 = '_' + resultSequence2;
+				j = j - 1;
 			}
 			else {
-				if (WayMatrix[i-1][j-1] == 'left') {
-					ResultSequence1 = WayMatrix[0][j-1] + ResultSequence1;
-					ResultSequence2 = '_' + ResultSequence2;
-					j = j - 1;
-				}
-				else {
-					ResultSequence1 = WayMatrix[0][j-1] + ResultSequence1;
-					ResultSequence2 = WayMatrix[i-1][0] + ResultSequence2;
-					i = i - 1;
-					j = j - 1;
-				};    
-			};
+				resultSequence1 = wayMatrix[0][j-1] + resultSequence1;
+				resultSequence2 = wayMatrix[i-1][0] + resultSequence2;
+				i = i - 1;
+				j = j - 1;
+			};    
 		};
-
 	};
+	tableOutput[0].innerHTML = tableGeneration(subSeqMatrix);
+	tableOutput[1].innerHTML = tableGeneration(wayMatrix);
+	stringOutput[0].innerText = resultSequence1;
+	stringOutput[1].innerText = resultSequence2;
+};

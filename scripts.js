@@ -14,7 +14,16 @@ $(function(){
 		firstSequence = getSequences($( '.inputBlock input')[0]);
 		secondSequence = getSequences($( '.inputBlock input')[1]);
 		if((firstSequence != 0) && (secondSequence != 0))
-			doGlobalAlignment(firstSequence, secondSequence, $('.Matrix table'), $(".Result p"));
+			switch($('.inputBlock select').val()){
+			case 'global': 
+				doGlobalAlignment(firstSequence, secondSequence, $('.Matrix table'), $(".Result p"));
+				break;
+			case 'local': break;
+			case 'pseudo':
+				doPseudoGlobalAlignment(firstSequence, secondSequence, $('.Matrix table'), $(".Result p"));
+				break;
+			}
+			
 		$('.Result').show();
 		console.log($('select').value);
 	});
