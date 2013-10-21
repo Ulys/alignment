@@ -14,19 +14,25 @@ $(function(){
 		firstSequence = getSequences($( '.inputBlock input')[0]);
 		secondSequence = getSequences($( '.inputBlock input')[1]);
 		if((firstSequence != 0) && (secondSequence != 0))
+			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result p"));
 			switch($('.inputBlock select').val()){
 			case 'global': 
-				doGlobalAlignment(firstSequence, secondSequence, $('.Matrix table'), $(".Result p"));
+				doGlobalAlignment(firstSequence, secondSequence, outStructure);
 				break;
 			case 'local': break;
 			case 'pseudo':
-				doPseudoGlobalAlignment(firstSequence, secondSequence, $('.Matrix table'), $(".Result p"));
+				doPseudoGlobalAlignment(firstSequence, secondSequence, outStructure);
 				break;
 			}
 			
 		$('.Result').show();
 		console.log($('select').value);
 	});
+
+	$('#clear').click(function() {
+		doAllClear();
+	});
+
 	var isTableVisible = false;
 	$('.Matrix').hide();
 	$('.Result').hide();
@@ -38,7 +44,18 @@ $(function(){
 		isTableVisible = !isTableVisible;
 	});
 });
-
+outPutStructure = {
+	wayMatrix: 0,
+	weightMatrix: 0,
+	firstSequenceResult: 0,
+	secondSequenceResult: 0,
+}
+var createStructureForOutput = function(tables, strings) {
+		this.weightMatrix = tables[0];
+		this.wayMatrix = tables[1];
+		this.firstSequenceResult = strings[0];
+		this.secondSequenceResult = strings[1];
+}
 
 var validate = function(objectForValidate){
 	if (typeof objectForValidate.value != "undefined"){
@@ -113,5 +130,12 @@ var tableGeneration =  function(table) {
 	return innerText;
 }
 var doAllClear = function() {
-	location,reload();
+	location.reload();
+}
+
+var showAlignmentResults = function (outStructure, weight, way, firstSequence, secondSequence) {
+	outStructure.weightMatrix.innerHTML = tableGeneration(weight);
+	outStructure.wayMatrix.innerHTML = tableGeneration(way);
+	outStructure.firstSequenceResult.innerText = firstSequence;
+	outStructure.secondSequenceResult.innerText = secondSequence;
 }

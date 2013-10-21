@@ -1,4 +1,4 @@
-var doPseudoGlobalAlignment = function(firstSequence, secondSequence, tableOutput, stringOutput) {
+var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 	var sequence1 = firstSequence;
 	var sequence2 = secondSequence;
 	var sequenceArray1 = [];
@@ -21,19 +21,19 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, tableOutpu
 	//Розраховуємо матрицю ваг-префіксів
 	for (var i = 2; i < sequence2.length+2; i++) {
 		for (var j = 2; j < sequence1.length+2; j++) {
-			var first = subSeqMatrix[i-1][j]-2;
+			var up = subSeqMatrix[i-1][j]-2;
 			if (sequenceArray1[j]==sequenceArray2[i-1]) {
-				var second = subSeqMatrix[i-1][j-1]+1
+				var diag = subSeqMatrix[i-1][j-1]+1
 			} 
 			else {
-				var second = subSeqMatrix[i-1][j-1]-1
+				var diag = subSeqMatrix[i-1][j-1]-1
 			};
-			var third = subSeqMatrix[i][j-1]-2;
-			subSeqMatrix[i][j] = Math.max(first,second,third);
+			var left = subSeqMatrix[i][j-1]-2;
+			subSeqMatrix[i][j] = Math.max(up,diag,left);
 	       //Паралельно заповнимо матрицю шляху       
-		    if (subSeqMatrix[i][j] == first) {wayMatrix[i][j] = 'up'};
-		    if (subSeqMatrix[i][j] == third) {wayMatrix[i][j] = 'left'};
-		    if (subSeqMatrix[i][j] == second) {wayMatrix[i][j] = 'diag'};	
+		    if (subSeqMatrix[i][j] == up) {wayMatrix[i][j] = 'up'};
+		    if (subSeqMatrix[i][j] == left) {wayMatrix[i][j] = 'left'};
+		    if (subSeqMatrix[i][j] == diag) {wayMatrix[i][j] = 'diag'};	
 		};
 	};        		
 	// Побудова вирівнювання
@@ -61,8 +61,6 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, tableOutpu
 			};    
 		};
 	};
-	tableOutput[0].innerHTML = tableGeneration(subSeqMatrix);
-	tableOutput[1].innerHTML = tableGeneration(wayMatrix);
-	stringOutput[0].innerText = resultSequence1;
-	stringOutput[1].innerText = resultSequence2;
+
+	showAlignmentResults(outStructure, subSeqMatrix, wayMatrix, resultSequence1, resultSequence2);
 };

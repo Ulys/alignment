@@ -1,5 +1,5 @@
 //Global Alignment
-var doGlobalAlignment = function(firstSequence, secondSequence, tableOutput, stringOutput) { 
+var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) { 
 	var table = initializeTable(firstSequence, secondSequence);
 	var way   = initializeTable(firstSequence, secondSequence);	
 	for (i = 2; i < firstSequence.length + 2; i++){
@@ -68,8 +68,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, tableOutput, str
 			}
 		}
 	}
-	tableOutput[0].innerHTML = tableGeneration(table);
-	tableOutput[1].innerHTML = tableGeneration(way);
-	stringOutput[0].innerText = firstResultSeq;
-	stringOutput[1].innerText = secondResultSeq;
+
+	showAlignmentResults(outStructure, table, way, firstResultSeq, secondResultSeq);
+
 }
