@@ -24,9 +24,6 @@ $(function(){
 				doPseudoGlobalAlignment(firstSequence, secondSequence, outStructure);
 				break;
 			}
-			
-		$('.Result').show();
-		console.log($('select').value);
 	});
 
 	$('#clear').click(function() {
@@ -47,14 +44,20 @@ $(function(){
 outPutStructure = {
 	wayMatrix: 0,
 	weightMatrix: 0,
-	firstSequenceResult: 0,
-	secondSequenceResult: 0,
+	firstSequence: 0,
+	secondSequence: 0,
 }
 var createStructureForOutput = function(tables, strings) {
 		this.weightMatrix = tables[0];
 		this.wayMatrix = tables[1];
-		this.firstSequenceResult = strings[0];
-		this.secondSequenceResult = strings[1];
+		this.firstSequence = strings[0];
+		this.secondSequence = strings[1];
+}
+var createOutputStrucutre = function (weight, way, firstSequence, secondSequence) {
+	this.weightMatrix = weight;
+	this.wayMatrix = way;
+	this.firstSequence = firstSequence;
+	this.secondSequence = secondSequence;
 }
 
 var validate = function(objectForValidate){
@@ -133,9 +136,9 @@ var doAllClear = function() {
 	location.reload();
 }
 
-var showAlignmentResults = function (outStructure, weight, way, firstSequence, secondSequence) {
-	outStructure.weightMatrix.innerHTML = tableGeneration(weight);
-	outStructure.wayMatrix.innerHTML = tableGeneration(way);
-	outStructure.firstSequenceResult.innerText = firstSequence;
-	outStructure.secondSequenceResult.innerText = secondSequence;
+var showAlignmentResults = function (outStructure, resultStructure) {
+	outStructure.weightMatrix.innerHTML = tableGeneration(resultStructure.weightMatrix);
+	outStructure.wayMatrix.innerHTML = tableGeneration(resultStructure.wayMatrix);
+	outStructure.firstSequence.innerText = resultStructure.firstSequence;
+	outStructure.secondSequence.innerText = resultStructure.secondSequence;
 }

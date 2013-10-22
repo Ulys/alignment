@@ -1,26 +1,27 @@
 var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
-	var sequence1 = firstSequence;
-	var sequence2 = secondSequence;
+	
 	var sequenceArray1 = [];
 	var sequenceArray2 = [];
 	var subSeqMatrix = initializeTable (firstSequence, secondSequence);
 	var wayMatrix = initializeTable (firstSequence, secondSequence);
+	
 	//Ініціюємо перший рядок і стовпець матриць
-	for (var i = 1; i < sequence2.length+2; i++) {
-		for (var j = 1; j < sequence1.length+2; j++) {
-			if (i==1) {
-				subSeqMatrix[i][j]=0; 
-				wayMatrix[i][j]='left'
+	for (var i = 1; i < firstSequence.length + 2; i++) {
+		for (var j = 1; j < secondSequence.length + 2; j++) {
+			if (i == 1) {
+				subSeqMatrix[i][j] = 0; 
+				wayMatrix[i][j] = 'left';
 			} 
-			else if (i>1 && j==1) {
-				subSeqMatrix[i][j]=0; 
-				wayMatrix[i][j]='up'
+			else if (i > 1 && j == 1) {
+				subSeqMatrix[i][j] = 0; 
+				wayMatrix[i][j] = 'up';
 			}; 
 		};
 	};
+	
 	//Розраховуємо матрицю ваг-префіксів
-	for (var i = 2; i < sequence2.length+2; i++) {
-		for (var j = 2; j < sequence1.length+2; j++) {
+	for (var i = 2; i < firstSequence.length+2; i++) {
+		for (var j = 2; j < secondSequence.length+2; j++) {
 			var up = subSeqMatrix[i-1][j]-2;
 			if (sequenceArray1[j]==sequenceArray2[i-1]) {
 				var diag = subSeqMatrix[i-1][j-1]+1
@@ -36,11 +37,13 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 		    if (subSeqMatrix[i][j] == diag) {wayMatrix[i][j] = 'diag'};	
 		};
 	};        		
+	
 	// Побудова вирівнювання
 	var resultSequence1 = '';
 	var resultSequence2 = '';
 	var i = wayMatrix.length;
 	var j = wayMatrix[0].length;
+	
 	while (i>1 && j>1) {
 		if (wayMatrix[i-1][j-1] == 'up') {
 			resultSequence1 = '_' + resultSequence1;
@@ -62,5 +65,6 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 		};
 	};
 
-	showAlignmentResults(outStructure, subSeqMatrix, wayMatrix, resultSequence1, resultSequence2);
+	var resultStructure = new createOutputStrucutre(subSeqMatrix, wayMatrix, resultSequence1, resultSequence2);
+	showAlignmentResults(outStructure, resultStructure);
 };

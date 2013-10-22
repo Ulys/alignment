@@ -2,6 +2,7 @@
 var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) { 
 	var table = initializeTable(firstSequence, secondSequence);
 	var way   = initializeTable(firstSequence, secondSequence);	
+	
 	for (i = 2; i < firstSequence.length + 2; i++){
 		table[i - 1][1] = (i - 2) * (- 2);
 		way[i - 1][1]   = 0;
@@ -10,6 +11,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			way[i][1]   = 0;
 		}
 	}
+	
 	for (j = 2; j < secondSequence.length + 2; j++){
 		table[1][j - 1] = (j - 2) * (- 2);
 		way[1][j - 1]   = 0;
@@ -18,7 +20,9 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			way[1][j]   = 0;
 		}
 	}
+	
 	way[1][1] = 0;
+	
 	for (i = 2; i < firstSequence.length + 2; i++){
 		for (j = 2; j < secondSequence.length + 2; j++){
 			var up = table[i][j - 1] - 2;
@@ -34,10 +38,12 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 				way[i][j] = 'up';
 		}
 	}
+	
 	var firstResultSeq  = '';
 	var secondResultSeq = '';
 	var x = firstSequence.length;
 	var y = secondSequence.length;
+	
 	while (x >= 1 || y >= 1){
 		if (way[x][y] == 'up'){
 			firstResultSeq = '_' + firstResultSeq;
@@ -68,7 +74,8 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			}
 		}
 	}
-
-	showAlignmentResults(outStructure, table, way, firstResultSeq, secondResultSeq);
+	
+	var resultStructure = new createOutputStrucutre(table, way, firstResultSeq, secondResultSeq);
+	showAlignmentResults(outStructure, resultStructure);
 
 }
