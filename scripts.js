@@ -6,14 +6,16 @@ var aminonucleotids = ['G', 'A', 'C', 'T', 'А', 'С', 'Т', 'А', 'С', 'Т'];
 
 
 $(function(){
+	$('.Matrix').hide();
+	$('.Result').hide();
 	$( '.Input #firstSequence' ).change(function() {validate(this)});
 	$( '.Input #secondSequence' ).change(function() {validate(this)});
 	$( '.Input button').click(function() {
 		validate($( '.Input input')[0]);
 		validate($( '.Input input')[1]);
-		firstSequence = getSequences($( '.inputBlock input')[0]);
-		secondSequence = getSequences($( '.inputBlock input')[1]);
-		if((firstSequence != 0) && (secondSequence != 0))
+		var firstSequence = getSequences($( '.inputBlock input')[0]);
+		var secondSequence = getSequences($( '.inputBlock input')[1]);
+		if((firstSequence != 0) && (secondSequence != 0)){
 			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result p"));
 			switch($('.inputBlock select').val()){
 			case 'global': 
@@ -24,15 +26,15 @@ $(function(){
 				doPseudoGlobalAlignment(firstSequence, secondSequence, outStructure);
 				break;
 			}
+			$('.Result').show();
+		}
 	});
 
 	$('#clear').click(function() {
 		doAllClear();
 	});
 
-	var isTableVisible = false;
-	$('.Matrix').hide();
-	$('.Result').hide();
+	var isTableVisible = false;	
 	$('.Result #click').click(function(){
 		if (!isTableVisible)
 			$('.Matrix').show('slow');
@@ -45,7 +47,7 @@ outPutStructure = {
 	wayMatrix: 0,
 	weightMatrix: 0,
 	firstSequence: 0,
-	secondSequence: 0,
+	secondSequence: 0
 }
 var createStructureForOutput = function(tables, strings) {
 		this.weightMatrix = tables[0];

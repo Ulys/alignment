@@ -39,8 +39,8 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 		}
 	}
 	
-	var firstResultSeq  = '';
-	var secondResultSeq = '';
+	firstResultSeq  = '';
+	secondResultSeq = '';
 	var x = firstSequence.length;
 	var y = secondSequence.length;
 	
@@ -74,8 +74,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			}
 		}
 	}
-	
+
 	var resultStructure = new createOutputStrucutre(table, way, firstResultSeq, secondResultSeq);
 	showAlignmentResults(outStructure, resultStructure);
-
 }

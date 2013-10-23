@@ -1,7 +1,5 @@
 var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 	
-	var sequenceArray1 = [];
-	var sequenceArray2 = [];
 	var subSeqMatrix = initializeTable (firstSequence, secondSequence);
 	var wayMatrix = initializeTable (firstSequence, secondSequence);
 	
@@ -23,7 +21,7 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 	for (var i = 2; i < firstSequence.length+2; i++) {
 		for (var j = 2; j < secondSequence.length+2; j++) {
 			var up = subSeqMatrix[i-1][j]-2;
-			if (sequenceArray1[j]==sequenceArray2[i-1]) {
+			if (firstSequence[i - 2]== secondSequence[j- 2]) {
 				var diag = subSeqMatrix[i-1][j-1]+1
 			} 
 			else {
