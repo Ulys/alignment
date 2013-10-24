@@ -21,7 +21,9 @@ $(function(){
 			case 'global': 
 				doGlobalAlignment(firstSequence, secondSequence, outStructure);
 				break;
-			case 'local': break;
+			case 'local':
+				doLocalAlignment(firstSequence, secondSequence, outStructure);
+				break;
 			case 'pseudo':
 				doPseudoGlobalAlignment(firstSequence, secondSequence, outStructure);
 				break;
