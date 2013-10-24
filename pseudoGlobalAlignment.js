@@ -8,11 +8,11 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 		for (var j = 1; j < secondSequence.length + 2; j++) {
 			if (i == 1) {
 				subSeqMatrix[i][j] = 0; 
-				wayMatrix[i][j] = 'left';
+				wayMatrix[i][j] = 0;
 			} 
 			else if (i > 1 && j == 1) {
 				subSeqMatrix[i][j] = 0; 
-				wayMatrix[i][j] = 'up';
+				wayMatrix[i][j] = 0;
 			}; 
 		};
 	};
@@ -42,7 +42,7 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 	var i = wayMatrix.length;
 	var j = wayMatrix[0].length;
 	
-	while (i>1 && j>1) {
+	while (i>1 || j>1) {
 		if (wayMatrix[i-1][j-1] == 'up') {
 			resultSequence1 = '_' + resultSequence1;
 			resultSequence2 = wayMatrix[i-1][0] + resultSequence2;
