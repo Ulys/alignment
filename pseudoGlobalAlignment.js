@@ -41,11 +41,7 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 	var resultSequence2 = '';
 	var i = wayMatrix.length;
 	var j = wayMatrix[0].length;
-	var verticalMaximum = 0;
-	for (int k = 2; k < firstSequence.length; k++){
-		if (verticalMaximum < subSeqMatrix[k][secondSequence])
-	}
-
+	
 	
 	while (i>1 || j>1) {
 		if (wayMatrix[i-1][j-1] == 'up') {
