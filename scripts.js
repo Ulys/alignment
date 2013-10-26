@@ -45,24 +45,6 @@ $(function(){
 		isTableVisible = !isTableVisible;
 	});
 });
-outPutStructure = {
-	wayMatrix: 0,
-	weightMatrix: 0,
-	firstSequence: 0,
-	secondSequence: 0
-}
-var createStructureForOutput = function(tables, strings) {
-		this.weightMatrix = tables[0];
-		this.wayMatrix = tables[1];
-		this.firstSequence = strings[0];
-		this.secondSequence = strings[1];
-}
-var createOutputStrucutre = function (weight, way, firstSequence, secondSequence) {
-	this.weightMatrix = weight;
-	this.wayMatrix = way;
-	this.firstSequence = firstSequence;
-	this.secondSequence = secondSequence;
-}
 
 var validate = function(objectForValidate){
 	if (typeof objectForValidate.value != "undefined"){
@@ -89,7 +71,7 @@ var stringValidate = function(stringForValidation) {
 	return true;
 }
 var getSequences = function(sequencesObject){
-	if (typeof sequencesObject.value != 'undefined' || sequencesObject.value !='')
+	if (typeof sequencesObject.value != 'undefined' && sequencesObject.value !='')
 		return sequencesObject.value.toUpperCase();
 	else
 		return 0;
