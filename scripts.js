@@ -118,6 +118,71 @@ var tableGeneration =  function(table) {
 	}
 	return innerText;
 }
+
+var resultPairStrings = [];
+resultPairStrings[0] = 'Results of Alignment';
+
+var findStartPoints = function (weightTable) {
+	var arrayOfCoordinates = [];
+	
+	var maxInRow = 0;
+	var i = weightTable.length-1;
+
+	for (var j = 0; j < weightTable[0].length; j++) {
+		if (weightTable[i][j] > maxInRow) {
+			maxInRow = weightTable[i][j]
+		};
+	};
+
+	for (var j = 0; j < weightTable[0].length; j++) {
+		if (weightTable[i][j] == maxInRow) {
+			var coordinate = new createCoordinate (i+1, j+1, maxInRow);
+			arrayOfCoordinates.push(coordinate);
+		};
+			
+	};
+	
+
+	console.log(maxInRow);
+
+	var maxInColumn = 0;
+	var j = weightTable[0].length-1;
+	
+	for (var i = 0; i < weightTable.length-1; i++) {
+		if (weightTable[i][j] > maxInColumn) {
+			maxInColumn = weightTable[i][j]
+		};
+	};
+
+	for (var i = 0; i < weightTable.length-1; i++) {
+		if (weightTable[i][j] == maxInColumn && maxInColumn>=maxInRow) {
+			var coordinate = new createCoordinate (i, j, maxInColumn);
+			arrayOfCoordinates.push(coordinate);
+		};
+	};
+
+	return (arrayOfCoordinates);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var doAllClear = function() {
 	location.reload();
 }

@@ -2,8 +2,9 @@ outPutStructure = {
 	wayMatrix: 0,
 	weightMatrix: 0,
 	firstSequence: 0,
-	secondSequence: 0
+	secondSequence: 0,
 }
+
 var createStructureForOutput = function(tables, strings) {
 		this.weightMatrix = tables[0];
 		this.wayMatrix = tables[1];
@@ -31,3 +32,6 @@ var createCoordinate = function(i, j, value){
 	if (typeof i != "undefined")
 		this.value = value;
 }
+
+
+
