@@ -32,9 +32,12 @@ $(function(){
 		}
 	});
 
+	$(".tab").tabs();
+
 	$('#clear').click(function() {
 		doAllClear();
 	});
+
 
 	var isTableVisible = false;	
 	$('.Result #click').click(function(){
