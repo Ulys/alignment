@@ -64,7 +64,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 				} else
 					firstResultSeq = '_' + firstResultSeq;
 			} else {
-				if ( y >= 1){
+				if (y >= 1){
 					secondResultSeq = secondSequence[y - 1] + secondResultSeq;
 					y -= 1;
 				}else
@@ -77,10 +77,26 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			}
 		}
 	}
-
-	var arrayOfCoordinates = findStartPoints(table);
-	console.log(arrayOfCoordinates);
-
 	var resultStructure = new createOutputStrucutre(table, way, firstResultSeq, secondResultSeq);
 	showAlignmentResults(outStructure, resultStructure);
+
+<<<<<<< HEAD
+	var arrayOfCoordinates = findStartPoints(table);
+=======
+//Інтегровані функції
+	var arrayOfCoordinates = findStartPoints (table);
+	
+>>>>>>> Added FindWay function to Global Alignment
+	console.log(arrayOfCoordinates);
+
+	var arrayOfResults = [];
+	
+	for (n = 0; n < arrayOfCoordinates.length; n++) {
+
+		arrayOfResults[n] = findReturnWay (firstSequence, secondSequence, table, way, arrayOfCoordinates[n], 0);
+
+	};
+
+	console.log(arrayOfResults);
+	
 }

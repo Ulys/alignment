@@ -122,9 +122,6 @@ var tableGeneration =  function(table) {
 	return innerText;
 }
 
-var resultPairStrings = [];
-resultPairStrings[0] = 'Results of Alignment';
-
 var findStartPoints = function (weightTable) {
 	var arrayOfCoordinates = [];
 	
@@ -139,15 +136,12 @@ var findStartPoints = function (weightTable) {
 
 	for (var j = 0; j < weightTable[0].length; j++) {
 		if (weightTable[i][j] == maxInRow) {
-			var coordinate = new createCoordinate (i+1, j+1, maxInRow);
+			var coordinate = new createCoordinate (i, j, maxInRow);
 			arrayOfCoordinates.push(coordinate);
 		};
 			
 	};
 	
-
-	console.log(maxInRow);
-
 	var maxInColumn = 0;
 	var j = weightTable[0].length-1;
 	
@@ -165,7 +159,60 @@ var findStartPoints = function (weightTable) {
 	};
 
 	return (arrayOfCoordinates);
+<<<<<<< HEAD
 }
+=======
+};
+
+var findReturnWay = function (firstSequence, secondSequence, weightTable, wayTable, startCoordinate, stop) {
+
+	var firstResultSeq  = '';
+	var secondResultSeq = '';
+	
+	var i = startCoordinate.i;
+	var j = startCoordinate.j;
+	
+	var x = weightTable.length - 2;
+	var y = weightTable[0].length - 2;
+
+	//Дописати рядки з двох боків
+	/*if (x > y) {
+
+	}*/
+
+	do {
+		if (wayTable[i][j] == 'up') {
+			firstResultSeq = '_' + firstResultSeq;
+			if ( j >= 1) {
+				secondResultSeq = secondSequence[j-2] + secondResultSeq;
+				j -= 1;
+			} else secondResultSeq = "_" + secondResultSeq; 
+		}
+			else {
+				if (wayTable[i][j] == 'left') {
+					secondResultSeq = '_' + secondResultSeq;
+					if (i >= 1) {
+						firstResultSeq = firstSequence[i-2] + firstResultSeq;
+						i -= 1;
+					} else firstResultSeq = '_' + firstResultSeq;
+				} else {
+					if (j >= 1) {
+						secondResultSeq = secondSequence[j-2] + secondResultSeq;
+						j -= 1;
+					} else secondResultSeq = "_" + secondResultSeq;
+					if (i >= 1) {
+						firstResultSeq = firstSequence[i-2] + firstResultSeq;
+						i -= 1;
+					} else firstResultSeq = '_' + firstResultSeq;
+				  };
+			};
+
+	} while (wayTable[i][j] != stop);
+	
+	var resultPairStrings = new createPairStrings (firstResultSeq, secondResultSeq);
+	return (resultPairStrings);
+};
+>>>>>>> Added FindWay function to Global Alignment
 
 var doAllClear = function() {
 	location.reload();

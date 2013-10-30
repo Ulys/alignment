@@ -39,8 +39,8 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 	// Побудова вирівнювання
 	var resultSequence1 = '';
 	var resultSequence2 = '';
-	var i = wayMatrix.length;
-	var j = wayMatrix[0].length;
+	var i = wayMatrix.length - 1;
+	var j = wayMatrix[0].length - 1;
 	
 	
 	while (i>1 || j>1) {

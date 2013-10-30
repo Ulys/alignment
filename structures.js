@@ -11,6 +11,7 @@ var createStructureForOutput = function(tables, strings) {
 		this.firstSequence = strings[0];
 		this.secondSequence = strings[1];
 }
+
 var createOutputStrucutre = function (weight, way, firstSequence, secondSequence) {
 	this.weightMatrix = weight;
 	this.wayMatrix = way;
@@ -31,6 +32,16 @@ var createCoordinate = function(i, j, value){
 		this.j = j;
 	if (typeof i != "undefined")
 		this.value = value;
+}
+
+resultPairStrings = {
+	resultSeq1: 0,
+	resultSeq2: 0,
+}
+
+var createPairStrings = function (resultSequence1, resultSequence2) {
+	this.resultSeq1 = resultSequence1;
+	this.resultSeq2 = resultSequence2;
 }
 
 
