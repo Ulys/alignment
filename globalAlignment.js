@@ -1,7 +1,7 @@
 //Global Alignment
 var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) { 
 	
-		var table = initializeTable(firstSequence, secondSequence);
+	var table = initializeTable(firstSequence, secondSequence);
 	var way   = initializeTable(firstSequence, secondSequence);	
 	
 	for (i = 2; i < firstSequence.length + 2; i++){
@@ -78,7 +78,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 		}
 	}
 
-	var arrayOfCoordinates = findStartPoints (table);
+	var arrayOfCoordinates = findStartPoints(table);
 	console.log(arrayOfCoordinates);
 
 	var resultStructure = new createOutputStrucutre(table, way, firstResultSeq, secondResultSeq);

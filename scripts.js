@@ -167,25 +167,6 @@ var findStartPoints = function (weightTable) {
 	return (arrayOfCoordinates);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var doAllClear = function() {
 	location.reload();
 }
