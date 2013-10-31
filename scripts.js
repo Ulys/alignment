@@ -159,10 +159,9 @@ var findStartPoints = function (weightTable) {
 	};
 
 	return (arrayOfCoordinates);
-<<<<<<< HEAD
-}
-=======
+//<<<<<<< HEAD
 };
+//=======
 
 var findReturnWay = function (firstSequence, secondSequence, weightTable, wayTable, startCoordinate, stop) {
 
@@ -212,7 +211,7 @@ var findReturnWay = function (firstSequence, secondSequence, weightTable, wayTab
 	var resultPairStrings = new createPairStrings (firstResultSeq, secondResultSeq);
 	return (resultPairStrings);
 };
->>>>>>> Added FindWay function to Global Alignment
+//>>>>>>> Added FindWay function to Global Alignment
 
 var doAllClear = function() {
 	location.reload();
