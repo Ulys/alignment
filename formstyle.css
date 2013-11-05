@@ -1,42 +1,47 @@
 html, body {
 	height: 100%;
-	background: #a3c473 url(Texture.jpg) repeat-y;
-	-moz-background-size: 100%; 
-  	-webkit-background-size: 100%;
-  	-o-background-size: 100%;
-  	background-size: 100%; 
+	background: #1f2e38 url(noisy.png) repeat;
 	margin: 0; 
 	padding: 0;
 }
 
-#mainBlock {
-	background-color: rgba(255,255,255,0.35);
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
-	min-height: 100%;
-  	height: auto !important;
-	height: 100%;
-  	margin-bottom: -30px;
-  	margin-top: 30px;
+@font-face {
+  font-family: Palo_Alto_Regular;
+  src: url(Palo_Alto_Regular.ttf);
 }
 
-.inputBlock {
-  	display: inline-block;
-  	width: 45%;
-  	vertical-align: top;
+@media only screen and (min-width: 320px) {
+  #mainBlock {
+    width: 95%;   }
+
+  .inputBlock {
+    width: 95%;   }
+}
+
+@media only screen and (min-width: 768px) {
+  #mainBlock {
+    width: 80%;   }
+
+  .inputBlock {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;  }
+}
+
+#mainBlock {
+	background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.5);
+  margin-left: auto;
+	margin-right: auto;
+	min-height: 100%;
+  height: auto !important;
+	height: 100%;
+  margin-bottom: -30px;
+  margin-top: 30px;
 }
 
 .inputBlock select {
 	width: 90%;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-o-appearance: none;
-	appearance: none;
-	border: 1px solid #eae0c2;
-	background-image: url(select_arrow.png); 
-	background-position: center right;
-	background-repeat: no-repeat;
 	border: 1px solid #eae0c2;
 	color: #555;
 	font-size: inherit;
@@ -49,19 +54,29 @@ html, body {
 }
 
 h1 {
-  	font-family: Bradley Hand ITC;
-  	color: #ffe465;
-  	font:normal;
+  	font-family: Palo_Alto_Regular;
+  	color: #FFD544;
+    text-shadow:0 0 5px rgba(255,255,255,0.5);
+    font:normal;
   	font-weight: bold;
   	text-align: center;
-  	padding-top: 10px;
+  	padding: 0;
+    margin: 0;
   	font-size: 60px;
-  
+}
+
+h3 {
+  padding-left: 50%;
+  font-family: calibri;
+  color: #FFD544;
+  padding-top: 0;
+  margin: 0;
 }
 
 fieldset{
-  	margin: 2% 10%;
-  	background-color: rgba(255,255,255,0.6);
+  	margin: 2% 5%;
+  	background-color: rgba(118,141,156,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
   	border: 1 solid #ccc2a6;
 }
 
@@ -99,8 +114,8 @@ h2 {
 }
 
 footer {
-	background-color: #007236;
-  	color: #ffffff;
+	background-color: #0a1a24;
+  color: #ffffff;
 	font-family: Calibri;
 	font-size: 14px;
 	height: 20px;
@@ -132,37 +147,29 @@ table {
 }
 
 button {      
-  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
-  	background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
-  	background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
-  	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);         
-  	background-color:#eae0c2;
-       
-  	-moz-border-radius:5px;
-  	-webkit-border-radius:5px;
-  	border-radius:5px;    
-  	border:2px solid #ccc2a6;
+  background-color:#FFE86B;
+
+   
+  border:1px solid #FFD544;
         
-  	color:#505739;
-  	font-family:arial;
-  	font-size:14px;
-  	font-weight:bold;
-  	height: 30px;
-  	width: 100px;
-  	margin-left: 80%;                     
+  color:#242A3D;
+  font-family:arial;
+  font-size:14px;
+  font-weight:bold;
+  height: 30px;
+  width: 100px;
+  margin-left: 80%;                     
 }
 
 button:hover {      
-  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ccc2a6), color-stop(1, #eae0c2));
-  	background:-moz-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
-  	background:-o-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
-  	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);      
-  	background-color:#ccc2a6;
+  background-color:#FFEE92;
+  cursor: pointer;
 }
 
 ul.tabs {
   	min-height: 40px;
-  	background-color: rgba(255,255,255,0.6); 
+  	background-color: #768d9c;
+    border-bottom: 1px solid #617988;
   	margin:0px; 
   	padding:0px; 
 } 
@@ -178,7 +185,7 @@ ul.tabs li {
 }
 
 a {
-  	color: #a1b16d;
+  	color: #c6d8e3;
   	text-decoration: none;
 }
 
@@ -186,3 +193,4 @@ a:hover {
    	text-shadow:0px 1px 0px #ccc2a6;
    	cursor: pointer;
 }
+
