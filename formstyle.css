@@ -6,38 +6,66 @@ html, body {
 }
 
 @font-face {
-  font-family: Palo_Alto_Regular;
-  src: url(Palo_Alto_Regular.ttf);
+    font-family: Palo_Alto_Regular;
+    src: url(Palo_Alto_Regular.ttf);
 }
 
 @media only screen and (min-width: 320px) {
-  #mainBlock {
-    width: 95%;   }
+    #mainBlock {
+        width: 95%;    }
 
-  .inputBlock {
-    width: 95%;   }
+    .inputBlock {
+        width: 95%;    }
+
+    button {
+        font-size:75%;
+        height: 25px;
+        width: 80px;
+        margin-top: 15px;
+        position: relative;
+        left: 30px;    }  
+
+    h3 {
+        padding: 0;
+        text-align: center;    }
+
+    p {
+        font-size: 14px;    }
 }
 
-@media only screen and (min-width: 768px) {
-  #mainBlock {
-    width: 80%;   }
+@media only screen and (min-width: 980px) {
+    #mainBlock {
+        width: 80%;    }
 
-  .inputBlock {
-    display: inline-block;
-    width: 45%;
-    vertical-align: top;  }
+    .inputBlock {
+        display: inline-block;
+        width: 45%;
+        vertical-align: top;
+        position: relative;    }
+
+    button {
+        font-size:14px;
+        height: 30px;
+        width: 100px;
+        margin-left: 80%;    }
+
+    h3 { 
+        padding-left: 50%;    }
+
+    p {
+        font-size: 18px;    }
 }
 
 #mainBlock {
-	background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(255,255,255,0.5);
-  margin-left: auto;
-	margin-right: auto;
-	min-height: 100%;
-  height: auto !important;
-	height: 100%;
-  margin-bottom: -30px;
-  margin-top: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -30px;
+    margin-top: 30px;
 }
 
 .inputBlock select {
@@ -66,11 +94,11 @@ h1 {
 }
 
 h3 {
-  padding-left: 50%;
-  font-family: calibri;
-  color: #FFD544;
-  padding-top: 0;
-  margin: 0;
+    font-family: calibri;
+    font-style: italic;
+    color: #FFD544;
+    padding-top: 0;
+    margin: 0;
 }
 
 fieldset{
@@ -87,19 +115,8 @@ input {
   	height: 25px;
 }
 
-p {
+p, h2 {
   	font-family: candara;
-  	font-size: 18px;
-  	font-stretch: expanded;
-  	color: #505739;
-  	font-weight: bold;
-  	margin-left: 40px;
-  	margin-bottom: 5px;
-}
-
-h2 {
-  	font-family: candara;
-  	font-size: 18px;
   	font-stretch: expanded;
   	color: #505739;
   	font-weight: bold;
@@ -114,8 +131,8 @@ h2 {
 }
 
 footer {
-	background-color: #0a1a24;
-  color: #ffffff;
+    background-color: #0a1a24;
+    color: #ffffff;
 	font-family: Calibri;
 	font-size: 14px;
 	height: 20px;
@@ -146,24 +163,17 @@ table {
   	table-layout: fixed;
 }
 
-button {      
-  background-color:#FFE86B;
-
-   
-  border:1px solid #FFD544;
-        
-  color:#242A3D;
-  font-family:arial;
-  font-size:14px;
-  font-weight:bold;
-  height: 30px;
-  width: 100px;
-  margin-left: 80%;                     
+button {
+    background-color:#FFE86B;
+    border:1px solid #FFD544;
+    color:#242A3D;
+    font-family:arial;
+    font-weight:bold;
 }
 
-button:hover {      
-  background-color:#FFEE92;
-  cursor: pointer;
+button:hover {
+    background-color:#FFEE92;
+    cursor: pointer;
 }
 
 ul.tabs {
