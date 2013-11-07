@@ -80,11 +80,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 	var resultStructure = new createOutputStrucutre(table, way, firstResultSeq, secondResultSeq);
 	showAlignmentResults(outStructure, resultStructure);
 
-//<<<<<<< HEAD
 	var arrayOfCoordinates = findStartPoints(table);
-//=======
-//Інтегровані функції
-	var arrayOfCoordinates = findStartPoints (table);
 	
 //>>>>>>> Added FindWay function to Global Alignment
 	console.log(arrayOfCoordinates);

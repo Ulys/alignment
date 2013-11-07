@@ -33,7 +33,7 @@ $(function(){
 	});
 
 	$(".tab").tabs();
-
+	// Was create for clear Button. Does we still need it?
 	$('#clear').click(function() {
 		doAllClear();
 	});
@@ -159,9 +159,7 @@ var findStartPoints = function (weightTable) {
 	};
 
 	return (arrayOfCoordinates);
-//<<<<<<< HEAD
 };
-//=======
 
 var findReturnWay = function (firstSequence, secondSequence, weightTable, wayTable, startCoordinate, stop) {
 
