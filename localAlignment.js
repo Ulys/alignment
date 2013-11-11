@@ -61,7 +61,6 @@ var doLocalAlignment = function (firstSequence, secondSequence, outStructure) {
 			finalResult.push(result[i]);
 		}
 	}
-	console.log(finalResult);
 	var beginPoint = [];
 	for (var i = 0; i < finalResult.length; i++){
 		var count = [];
@@ -88,18 +87,7 @@ var doLocalAlignment = function (firstSequence, secondSequence, outStructure) {
 		}
 	}
 	finalResult = readyForOutPut;
-	var stringResult = "";
-	if (finalResult.length == 1){
-		stringResult = finalResult[0];
-	} else {
-		for(var i = 0; i < finalResult.length; i++){
-			stringResult += finalResult[i];
-			if(i != finalResult.length - 1){
-				stringResult += "<br>";
-			}
-		}		
-	}
-	var resultStructure = new createOutputStrucutre(table, way, firstSequence, stringResult);
+	var resultStructure = new createOutputStrucutre(table, way, stringComparision(firstSequence, finalResult));
 	showAlignmentResults(outStructure, resultStructure);
 
 }

@@ -16,7 +16,7 @@ $(function(){
 		var firstSequence = getSequences($( '.inputBlock input')[0]);
 		var secondSequence = getSequences($( '.inputBlock input')[1]);
 		if((firstSequence != 0) && (secondSequence != 0)){
-			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result table"));
+			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result #ResultString"));
 			switch($('.inputBlock select').val()){
 			case 'global': 
 				doGlobalAlignment(firstSequence, secondSequence, outStructure);
@@ -33,10 +33,6 @@ $(function(){
 	});
 
 	$(".tab").tabs();
-	// Was create for clear Button. Does we still need it?
-	$('#clear').click(function() {
-		doAllClear();
-	});
 
 
 	var isTableVisible = false;	
@@ -198,10 +194,6 @@ var putRowInResult = function (weightTable, max){
 	};
 	return result;
 };
-
-var doAllClear = function() {
-	location.reload();
-}
 
 var showAlignmentResults = function (outStructure, resultStructure) {
 	outStructure.weightMatrix.innerHTML = tableGeneration(resultStructure.weightMatrix);
