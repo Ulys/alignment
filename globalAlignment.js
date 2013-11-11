@@ -47,7 +47,6 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 	var x = firstSequence.length;
 	var y = secondSequence.length;
 	var startPoint = new createCoordinate(x, y, table[x - 1][y - 1]);
-	console.log(findReturnWay(firstSequence, secondSequence, table, way, startPoint));
 	while (x >= 1 || y >= 1){
 		if (way[x][y] == 'up'){
 			firstResultSeq = '_' + firstResultSeq;
@@ -78,6 +77,8 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			}
 		}
 	}
-	var resultStructure = new createOutputStrucutre(table, way, firstResultSeq, secondResultSeq);
+	resultsStrings = [];
+	resultsStrings.push(secondResultSeq);
+	var resultStructure = new createOutputStrucutre(table, way, stringComparision(firstResultSeq, resultsStrings));
 	showAlignmentResults(outStructure, resultStructure);	
 }

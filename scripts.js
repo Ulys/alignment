@@ -16,7 +16,7 @@ $(function(){
 		var firstSequence = getSequences($( '.inputBlock input')[0]);
 		var secondSequence = getSequences($( '.inputBlock input')[1]);
 		if((firstSequence != 0) && (secondSequence != 0)){
-			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result p"));
+			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result table"));
 			switch($('.inputBlock select').val()){
 			case 'global': 
 				doGlobalAlignment(firstSequence, secondSequence, outStructure);
@@ -121,6 +121,26 @@ var tableGeneration =  function(table) {
 	}
 	return innerText;
 }
+var stringComparision = function (template, results){
+	var innerText = '';
+	innerText += '<tr>';
+	for (var i = 0; i < template.length; i++){
+		innerText += '<td>';
+		innerText += template[i];
+		innerText += '</td>';
+	}
+	innerText += '</tr>';
+	for (var i = 0; i < results.length; i++){
+		innerText += '<tr>';
+		for(var j = 0; j < results[i].length; j++){
+			innerText += '<td>';
+			innerText += results[i][j];
+			innerText += '</td>';
+		}	
+		innerText += '</tr>';
+	}
+	return innerText;
+}
 var isPatternAlreadyIn = function (pattern, collection) {
 	for (var i = 0; i < collection.length; i++){
 		if (collection[i] == pattern)
@@ -186,8 +206,7 @@ var doAllClear = function() {
 var showAlignmentResults = function (outStructure, resultStructure) {
 	outStructure.weightMatrix.innerHTML = tableGeneration(resultStructure.weightMatrix);
 	outStructure.wayMatrix.innerHTML = tableGeneration(resultStructure.wayMatrix);
-	outStructure.firstSequence.innerText = resultStructure.firstSequence;
-	outStructure.secondSequence.innerHTML = "<p>" + resultStructure.secondSequence + "<p>";
+	outStructure.strings.innerHTML = resultStructure.strings;
 }
 var decorateOutputFirstString = function(input, output){
 	var result = output;
