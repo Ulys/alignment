@@ -126,90 +126,51 @@ var findStartPoints = function (weightTable) {
 	var arrayOfCoordinates = [];
 	
 	var maxInRow = 0;
-	var i = weightTable.length-1;
-
-	for (var j = 0; j < weightTable[0].length; j++) {
-		if (weightTable[i][j] > maxInRow) {
-			maxInRow = weightTable[i][j]
-		};
-	};
-
-	for (var j = 0; j < weightTable[0].length; j++) {
-		if (weightTable[i][j] == maxInRow) {
-			var coordinate = new createCoordinate (i, j, maxInRow);
-			arrayOfCoordinates.push(coordinate);
-		};
-			
-	};
-	
 	var maxInColumn = 0;
-	var j = weightTable[0].length-1;
-	
-	for (var i = 0; i < weightTable.length-1; i++) {
-		if (weightTable[i][j] > maxInColumn) {
-			maxInColumn = weightTable[i][j]
+	// Warning!!!! The coner element included only in Column
+	for (var j = 0; j < weightTable[0].length; j++) {
+		if (weightTable[weightTable.length-1][j] > maxInRow) {
+			maxInRow = weightTable[weightTable.length-1][j]
+		};
+	};
+	// Warning!!!! The coner element included only in Column
+	for (var i = 0; i < weightTable.length; i++) {
+		if (weightTable[i][weightTable[0].length-1] > maxInColumn) {
+			maxInColumn = weightTable[i][weightTable[0].length-1];
 		};
 	};
 
-	for (var i = 0; i < weightTable.length-1; i++) {
-		if (weightTable[i][j] == maxInColumn && maxInColumn>=maxInRow) {
-			var coordinate = new createCoordinate (i, j, maxInColumn);
-			arrayOfCoordinates.push(coordinate);
+	if(maxInRow > maxInColumn){
+		arrayOfCoordinates.push(putRowInResult(weightTable, maxInRow));
+	} else if (maxInRow < maxInColumn){
+		arrayOfCoordinates.push(putColumnInResult(weightTable, maxInColumn));
+	} else {
+		arrayOfCoordinates.push(putColumnInResult(weightTable, maxInColumn));
+		arrayOfCoordinates.push(putRowInResult(weightTable, maxInRow));
+	}
+
+	return arrayOfCoordinates;
+};
+var putColumnInResult = function (weightTable, max){
+	var result = [];
+	for (var i = 0; i < weightTable.length; i++) {
+		if (weightTable[i][weightTable[0].length-1] == max) {
+			var coordinate = new createCoordinate (i, weightTable[0].length-1, max);
+			result.push(coordinate);
 		};
 	};
-
-	return (arrayOfCoordinates);
+	return result;
 };
-
-var findReturnWay = function (firstSequence, secondSequence, weightTable, wayTable, startCoordinate, stop) {
-
-	var firstResultSeq  = '';
-	var secondResultSeq = '';
-	
-	var i = startCoordinate.i;
-	var j = startCoordinate.j;
-	
-	var x = weightTable.length - 2;
-	var y = weightTable[0].length - 2;
-
-	//Дописати рядки з двох боків
-	/*if (x > y) {
-
-	}*/
-
-	do {
-		if (wayTable[i][j] == 'up') {
-			firstResultSeq = '_' + firstResultSeq;
-			if ( j >= 1) {
-				secondResultSeq = secondSequence[j-2] + secondResultSeq;
-				j -= 1;
-			} else secondResultSeq = "_" + secondResultSeq; 
-		}
-			else {
-				if (wayTable[i][j] == 'left') {
-					secondResultSeq = '_' + secondResultSeq;
-					if (i >= 1) {
-						firstResultSeq = firstSequence[i-2] + firstResultSeq;
-						i -= 1;
-					} else firstResultSeq = '_' + firstResultSeq;
-				} else {
-					if (j >= 1) {
-						secondResultSeq = secondSequence[j-2] + secondResultSeq;
-						j -= 1;
-					} else secondResultSeq = "_" + secondResultSeq;
-					if (i >= 1) {
-						firstResultSeq = firstSequence[i-2] + firstResultSeq;
-						i -= 1;
-					} else firstResultSeq = '_' + firstResultSeq;
-				  };
-			};
-
-	} while (wayTable[i][j] != stop);
-	
-	var resultPairStrings = new createPairStrings (firstResultSeq, secondResultSeq);
-	return (resultPairStrings);
+var putRowInResult = function (weightTable, max){
+	var result = [];
+	for (var j = 0; j < weightTable[0].length; j++) {
+		if (weightTable[weightTable.length-1][j] == max) {
+			var coordinate = new createCoordinate (weightTable.length-1, j, max);
+			result.push(coordinate);
+		};	
+	};
+	return result;
 };
-//>>>>>>> Added FindWay function to Global Alignment
 
 var doAllClear = function() {
 	location.reload();
@@ -219,5 +180,19 @@ var showAlignmentResults = function (outStructure, resultStructure) {
 	outStructure.weightMatrix.innerHTML = tableGeneration(resultStructure.weightMatrix);
 	outStructure.wayMatrix.innerHTML = tableGeneration(resultStructure.wayMatrix);
 	outStructure.firstSequence.innerText = resultStructure.firstSequence;
-	outStructure.secondSequence.innerText = resultStructure.secondSequence;
+	outStructure.secondSequence.innerHTML = "<p>" + resultStructure.secondSequence + "<p>";
+}
+var decorateOutputFirstString = function(input, output){
+	var result = output;
+	for(i = output.length; i < input.length; i ++){
+		result += input[i];
+	}
+	return result;
+}
+var decorateOutputSecondString = function(template, output){
+	var result = output;
+	for(i = output.length; i < template.length; i ++){
+		result += "_";
+	}
+	return result;
 }

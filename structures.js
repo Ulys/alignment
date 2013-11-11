@@ -2,7 +2,7 @@ outPutStructure = {
 	wayMatrix: 0,
 	weightMatrix: 0,
 	firstSequence: 0,
-	secondSequence: 0,
+	secondSequence: 0
 }
 
 var createStructureForOutput = function(tables, strings) {
