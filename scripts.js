@@ -121,6 +121,13 @@ var tableGeneration =  function(table) {
 	}
 	return innerText;
 }
+var isPatternAlreadyIn = function (pattern, collection) {
+	for (var i = 0; i < collection.length; i++){
+		if (collection[i] == pattern)
+			return true;
+	}
+	return false;
+};
 
 var findStartPoints = function (weightTable) {
 	var arrayOfCoordinates = [];
