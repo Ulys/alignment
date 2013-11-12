@@ -16,7 +16,7 @@ $(function(){
 		var firstSequence = getSequences($( '.inputBlock input')[0]);
 		var secondSequence = getSequences($( '.inputBlock input')[1]);
 		if((firstSequence != 0) && (secondSequence != 0)){
-			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result #ResultString"));
+			var outStructure = new createStructureForOutput($('.Matrix table'), $(".Result table"));
 			switch($('.inputBlock select').val()){
 			case 'global': 
 				doGlobalAlignment(firstSequence, secondSequence, outStructure);

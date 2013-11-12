@@ -7,7 +7,7 @@ outPutStructure = {
 var createStructureForOutput = function(tables, strings) {
 		this.weightMatrix = tables[0];
 		this.wayMatrix = tables[1];
-		this.strings = strings;
+		this.strings = strings[0];
 }
 
 var createOutputStrucutre = function (weight, way, strings) {
