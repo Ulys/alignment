@@ -84,7 +84,7 @@ var initializeTable = function (firstSequence, secondSequence) {
 			row.push(0);
 		table.push(row);
 	}
-	table[0][0] = 'Symbol';
+	table[0][0] = '';
 	table[0][1] = '_';
 	table[1][0] = '_';
 	for (i = 2; i < firstSequence.length + 2; i++){
