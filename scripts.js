@@ -35,7 +35,7 @@ $(function(){
 	$(".tab").tabs();
 
 
-	var isTableVisible = false;	
+	var isTableVisible = false;
 	$('.Result #click').click(function(){
 		if (!isTableVisible)
 			$('.Matrix').show('slow');
@@ -176,9 +176,9 @@ var findStartPoints = function (weightTable) {
 };
 var putColumnInResult = function (weightTable, max){
 	var result = [];
-	for (var i = 0; i < weightTable.length; i++) {
+	for (var i = 0; i < weightTable.length - 1; i++) {
 		if (weightTable[i][weightTable[0].length-1] == max) {
-			var coordinate = new createCoordinate (i, weightTable[0].length-1, max);
+			var coordinate = new createCoordinate (i - 1, weightTable[0].length-2, max);
 			result.push(coordinate);
 		};
 	};
@@ -188,7 +188,7 @@ var putRowInResult = function (weightTable, max){
 	var result = [];
 	for (var j = 0; j < weightTable[0].length; j++) {
 		if (weightTable[weightTable.length-1][j] == max) {
-			var coordinate = new createCoordinate (weightTable.length-1, j, max);
+			var coordinate = new createCoordinate (weightTable.length-2, j - 1, max);
 			result.push(coordinate);
 		};	
 	};

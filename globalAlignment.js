@@ -46,9 +46,8 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 
 	var x = firstSequence.length;
 	var y = secondSequence.length;
-	var startPoint = new createCoordinate(x, y, table[x - 1][y - 1]);
 	while (x >= 1 || y >= 1){
-		if (way[x][y] == 'up'){
+		if (way[x + 1][y + 1] == 'up'){
 			firstResultSeq = '_' + firstResultSeq;
 			if ( y >= 1){
 				secondResultSeq = secondSequence[y - 1] + secondResultSeq;
@@ -56,7 +55,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			}else
 				secondResultSeq = "_" + secondResultSeq;
 		} else {
-			if (way[x][y] == 'left'){
+			if (way[x + 1][y + 1] == 'left'){
 				secondResultSeq = '_' + secondResultSeq;
 				if (x >= 1){
 					firstResultSeq = firstSequence[x - 1] + firstResultSeq;
@@ -77,7 +76,7 @@ var doGlobalAlignment = function(firstSequence, secondSequence, outStructure) {
 			}
 		}
 	}
-	resultsStrings = [];
+	var resultsStrings = [];
 	resultsStrings.push(secondResultSeq);
 	var resultStructure = new createOutputStrucutre(table, way, stringComparision(firstResultSeq, resultsStrings));
 	showAlignmentResults(outStructure, resultStructure);	

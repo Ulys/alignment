@@ -39,6 +39,34 @@ var doLocalAlignment = function (firstSequence, secondSequence, outStructure) {
 				way[i][j] = 'up';
 		}
 	}
+	
+	var temporaryResult = countTemporaryResult(firstSequence, secondSequence);
+	var finalResult = findResult(temporaryResult, countMaxLength(temporaryResult));
+	var beginPoint = findHomolgyStartPoint(finalResult, firstSequence);
+	var readyForOutPut = prepareForOutput(finalResult, beginPoint);
+	
+	var resultStructure = new createOutputStrucutre(table, way, stringComparision(firstSequence, readyForOutPut));
+	showAlignmentResults(outStructure, resultStructure);
+}
+var countMaxLength = function(result){
+	var maxLength = 0;
+	for(var i = 0; i < result.length; i++){
+		if (result[i].length > maxLength){
+			maxLength = result[i].length;
+		}
+	}
+	return maxLength;
+}
+var findResult = function(result, maxLength){
+	var finalResult = [];
+	for(var i = 0; i < result.length; i++){
+		if((result[i].length == maxLength) && !isPatternAlreadyIn(result[i], finalResult)){
+			finalResult.push(result[i]);
+		}
+	}
+	return finalResult;
+}
+var countTemporaryResult = function(firstSequence, secondSequence){
 	var result = [];
 	for (var i = 1; i <= secondSequence.length; i++){
 		for (var k = 0; k <= secondSequence.length - i; k++){
@@ -49,23 +77,14 @@ var doLocalAlignment = function (firstSequence, secondSequence, outStructure) {
 			}
 		}
 	}
-	var maxLength = 0;
-	for(var i = 0; i < result.length; i++){
-		if (result[i].length > maxLength){
-			maxLength = result[i].length;
-		}
-	}
-	var finalResult = [];
-	for(var i = 0; i < result.length; i++){
-		if((result[i].length == maxLength) && !isPatternAlreadyIn(result[i], finalResult)){
-			finalResult.push(result[i]);
-		}
-	}
+	return result;
+}
+var findHomolgyStartPoint = function(result, firstSequence){
 	var beginPoint = [];
-	for (var i = 0; i < finalResult.length; i++){
+	for (var i = 0; i < result.length; i++){
 		var count = [];
-		for(var j = 0; j <= firstSequence.length - finalResult[i].length; j++){	
-			if(finalResult[i] == firstSequence.substring(j, finalResult[i].length + j)){
+		for(var j = 0; j <= firstSequence.length - result[i].length; j++){	
+			if(result[i] == firstSequence.substring(j, result[i].length + j)){
 				count.push(j);
 			}
 		}
@@ -73,21 +92,21 @@ var doLocalAlignment = function (firstSequence, secondSequence, outStructure) {
 			beginPoint.push(count);
 		}
 	}
+	return beginPoint;
+}
+var prepareForOutput = function(result, beginPoint){
 	var readyForOutPut = [];
 	for (var i = 0; i < beginPoint.length; i++){
 		for(var j = 0; j < beginPoint[i].length; j++){
-			var temp = finalResult[i];
+			var temp = result[i];
 	 		for(var k = beginPoint[i][j] - 1; k >= 0; k--){
-	 			temp = "_" + temp;
+	 			temp = " " + temp;
 	 		}
 			while(temp.length < firstSequence.length){
-				temp += "_";
+				temp += " ";
 			}
 	 		readyForOutPut.push(temp);
 		}
 	}
-	finalResult = readyForOutPut;
-	var resultStructure = new createOutputStrucutre(table, way, stringComparision(firstSequence, finalResult));
-	showAlignmentResults(outStructure, resultStructure);
-
+	return readyForOutPut;
 }
