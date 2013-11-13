@@ -15,29 +15,6 @@ html, body {
     src: url(Quark.otf);
 }
 
-@media only screen and (min-width: 320px) {
-    #mainBlock {
-        width: 95%;    }
-
-    .inputBlock {
-        width: 95%;    }
-
-    button {
-        font-size:75%;
-        height: 25px;
-        width: 80px;
-        margin-top: 15px;
-        position: relative;
-        left: 30px;    }  
-
-    h3 {
-        padding: 0;
-        text-align: center;    }
-
-    p, h2 {
-        font-size: 14px;    }
-}
-
 @media only screen and (min-width: 980px) {
     #mainBlock {
         width: 80%;    }
@@ -59,6 +36,9 @@ html, body {
 
     p, h2 {
         font-size: 18px;    }
+
+    .responsive {
+        width: 90%;  }
 }
 
 #mainBlock {
@@ -107,7 +87,7 @@ h3 {
     margin: 0;
 }
 
-fieldset{
+.fieldset{
   	margin: 2% 5%;
   	background-color: rgba(118,141,156,0.1);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -116,12 +96,12 @@ fieldset{
 }
 
 
-fieldset:hover {
+.fieldset:hover {
     opacity: 1 !important;
     transition: opacity 1s;
 }
 
-.ChangeLight:hover fieldset {
+.ChangeLight:hover .fieldset {
     opacity: 0.5;
     transition: opacity 1s;
 }
@@ -153,28 +133,23 @@ p, h2 {
   margin-bottom: 5px;
 }
 
-.ResultsTable {
-  margin: 10px auto;
-  width: auto;
+.responsive {
   border-collapse: collapse;
   table-layout: fixed;
   border: 1px solid #ccc2a6;
   background-color: #ffffff;
   font-family: calibri;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 
-.ResultsTable td, th {
-  border: 1px solid #9AA4AA;
-  text-align: center;
-  margin: 5%;
-  width: 28px;
+.responsive th { font-weight: bold; }
+.responsive td, .responsive th { text-align: center; }
+
+.responsive tr:nth-child(2n+1) {
+    background-color: #DCDDE3;
 }
-
-.ResultsTable th {
-  background-color: #ABB2B6;
-}
-
-
 
 #resultString {
   margin-top: 10px;
@@ -191,6 +166,7 @@ button {
     color:#242A3D;
     font-family:arial;
     font-weight:bold;
+    margin-bottom: 10px;
 }
 
 button:hover {

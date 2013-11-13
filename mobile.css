@@ -1,0 +1,33 @@
+/* Mobile */
+
+@media only screen and (max-width: 980px) {
+    
+    #mainBlock { width: 95%; }
+
+    .inputBlock { width: 95%; }
+
+    button { font-size:75%; height: 25px; width: 80px; margin-top: 15px; position: relative; left: 30px;    }  
+
+    h3 { padding: 0; text-align: center; }
+
+    p, h2 { font-size: 16px; } 
+
+    #resultString { font-size: 16px;}
+
+    .responsive { margin-bottom: 0; }
+    .responsive td, .responsive th {padding: 3px; width: 28px;}
+    
+    .pinned { position: absolute; left: 0; top: 0; background: #fff; width: 30px; overflow: hidden; overflow-x: scroll; border-right: 1px solid #ccc; border-left: 1px solid #ccc; }
+    .pinned table { border-right: none; border-left: none; width: 100%; }
+    .pinned table th, .pinned table td { white-space: nowrap; }
+    .pinned td:last-child { border-bottom: 0; }
+    
+    div.table-wrapper { position: relative; margin-bottom: 20px; overflow: hidden; border-right: 1px solid #ccc; width: auto;}
+    div.table-wrapper div.scrollable { margin-left: 30px; max-width: auto;} 
+    div.table-wrapper div.scrollable { overflow: scroll; overflow-y: hidden; }
+    div.table-wrapper div.scrollable table.responsive { width: 100%; }
+
+    table.responsive td, table.responsive th { position: relative; white-space: nowrap; overflow: hidden; }
+    table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
+
+}

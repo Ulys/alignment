@@ -2,7 +2,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Порівняння послідовностей</title>
-		<link rel = "stylesheet"  href="formstyle.css" media="all">
+		<link rel = "stylesheet"  href = "formstyle.css" media="all">
+		<link rel = "stylesheet"  href = "mobile.css" media="all">
 		<link rel="icon" href="icoImage.ico" type="image/ico">
 	</head>
 
@@ -25,13 +26,13 @@
 				</div>
 	        	
 	        	<div id = "alignment">
-					<fieldset class = "Input">
+					<div class = "fieldset Input">
 						
 						<div class = "inputBlock">
 							<p>Введіть першу послідовність</p>
-							<input id="firstSequence" type="text">
+							<input id="firstSequence" type="text" maxlength = "20">
 							<p>Введіть другу послідовність</p>
-							<input id="secondSequence" type="text">
+							<input id="secondSequence" type="text" maxlength = "20">
 						</div>
 						<div class = "inputBlock">
 							<p>Оберіть алгоритм вирівнювання</p>
@@ -43,30 +44,30 @@
 							</select><br>
 						</div>
 						<button id="showResults">OK</button>
-					</fieldset>
+					</div>
 
-				<div class = "ChangeLight">
-					<fieldset class = "Result" >
-						<h2>Результат порівняння</h2>
-						<table id = "resultString"></table>
-						<button id="click">Детальніше</button>
-					</fieldset>		
+					<div class = "ChangeLight">
+						<div class = "fieldset Result" >
+							<h2>Результат порівняння</h2>
+							<table id = "resultString"></table>
+							<button id="click">Детальніше</button>
+						</div>		
 
-					<fieldset class = "Matrix" >
-						<h2>Матриці ваг префіксів та шляху
-							<span class='tip'><a tabindex="1"><em>?</em></a>
-								<span class='answer'>
-									Перша матриця - матриця ваг-префіксів, кожна ячейка якої містить вагу вирівнювання підпослідовностей. 
-									<br>
-									<br>
-									Друга матриця - матриця шляху, кожний елемент якої  вказує на елемент з якого отримано значення відповідної ячейки матриці ваг-префіксів. 
-								</span>
-							</span> 
-						</h2>
-						<table class = "ResultsTable" id = "weight"></table> <br>
-						<table class = "ResultsTable" id = "way"></table>
-					</fieldset>	<br>
-				</div>
+						<div class = "fieldset Matrix" >
+							<h2>Матриці ваг префіксів та шляху
+								<span class='tip'><a tabindex="1"><em>?</em></a>
+									<span class='answer'>
+										Перша матриця - матриця ваг-префіксів, кожна ячейка якої містить вагу вирівнювання підпослідовностей. 
+										<br>
+										<br>
+										Друга матриця - матриця шляху, кожний елемент якої  вказує на елемент з якого отримано значення відповідної ячейки матриці ваг-префіксів. 
+									</span>
+								</span> 
+							</h2>
+							<table class = "responsive" id = "weight"></table> <br>
+							<table class = "responsive" id = "way"></table>
+						</div>	<br>
+					</div>
 				</div>
 
 			</div>
@@ -84,7 +85,9 @@
 		<script type = "text/javascript" src = "pseudoGlobalAlignment.js"></script>
 		<script type = "text/javascript" src = "localAlignment.js"></script>
 		<script type = "text/javascript" src = "structures.js"></script>
+		<script type = "text/javascript" src = "responsive-tables.js"></script>
 		<script type = "text/javascript" src = "scripts.js"></script>
+
 
 	</body>
 </html>
