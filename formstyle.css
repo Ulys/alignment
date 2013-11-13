@@ -112,6 +112,18 @@ fieldset{
   	background-color: rgba(118,141,156,0.1);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
   	border: 1 solid #ccc2a6;
+    transition: opacity 1s;
+}
+
+
+fieldset:hover {
+    opacity: 1 !important;
+    transition: opacity 1s;
+}
+
+.ChangeLight:hover fieldset {
+    opacity: 0.5;
+    transition: opacity 1s;
 }
 
 input {
