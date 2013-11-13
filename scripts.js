@@ -195,6 +195,40 @@ var putRowInResult = function (weightTable, max){
 	return result;
 };
 
+var findReturnWay = function(data){
+	while (data.x >= 1 || data.y >= 1){
+		if (data.way[data.x + 1][data.y + 1] == 'up'){
+			data.firstResultSeq = '_' + data.firstResultSeq;
+			if ( data.y >= 1){
+				data.secondResultSeq = data.secondSequence[y - 1] + data.secondResultSeq;
+				data.y -= 1;
+			}else
+				data.secondResultSeq = "_" + data.secondResultSeq;
+		} else {
+			if (data.way[data.x + 1][data.y + 1] == 'left'){
+				data.secondResultSeq = '_' + data.secondResultSeq;
+				if (data.x >= 1){
+					data.firstResultSeq = data.firstSequence[data.x - 1] + data.firstResultSeq;
+					data.x -= 1;
+				} else
+					data.firstResultSeq = '_' + data.firstResultSeq;
+			} else {
+				if (data.y >= 1){
+					data.secondResultSeq = data.secondSequence[data.y - 1] + data.secondResultSeq;
+					data.y -= 1;
+				}else
+					data.secondResultSeq = "_" + data.secondResultSeq;
+				if (data.x >= 1){
+					data.firstResultSeq = data.firstSequence[data.x - 1] + data.firstResultSeq;
+					data.x -= 1;
+				} else
+					data.firstResultSeq = '_' + data.firstResultSeq;
+			}
+		}
+	}
+	return new createPairStrings(data.firstResultSeq, data.secondResultSeq);
+}
+
 var showAlignmentResults = function (outStructure, resultStructure) {
 	outStructure.weightMatrix.innerHTML = tableGeneration(resultStructure.weightMatrix);
 	outStructure.wayMatrix.innerHTML = tableGeneration(resultStructure.wayMatrix);
@@ -213,4 +247,21 @@ var decorateOutputSecondString = function(template, output){
 		result += "_";
 	}
 	return result;
+}
+var fillInTables = function(firstSequence, secondSequence, table, way){
+	for (i = 2; i < firstSequence.length + 2; i++){
+		for (j = 2; j < secondSequence.length + 2; j++){
+			var up = table[i][j - 1] - 2;
+			(firstSequence[i - 2] == secondSequence[j - 2]) ? D = 1 :  D = (-1);
+			var diag = table[i - 1][j - 1] + D;
+			var left = table[i - 1][j] - 2;
+			table[i][j] = Math.max(up, left, diag);			
+			if (table[i][j] == diag)
+				way[i][j] = 'diag';
+			if (table[i][j] == left)
+				way[i][j] = 'left';
+			if (table[i][j] == up)
+				way[i][j] = 'up';
+		}
+	}
 }

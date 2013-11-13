@@ -32,14 +32,30 @@ var createCoordinate = function(i, j, value){
 }
 
 resultPairStrings = {
-	resultSeq1: 0,
-	resultSeq2: 0,
+	sequence1: 0,
+	sequence2: 0,
 }
 
 var createPairStrings = function (resultSequence1, resultSequence2) {
-	this.resultSeq1 = resultSequence1;
-	this.resultSeq2 = resultSequence2;
+	this.sequence1 = resultSequence1;
+	this.sequence2 = resultSequence2;
 }
-
-
+var strucutureForReturnWay = {
+	firstSequence: 0,
+	secondSequence: 0,
+	way: 0,
+	x: 0,
+	y: 0,
+	firstResultSeq: 0,
+	secondResultSeq: 0
+};
+var createStructureForReturnWay = function(firstSequence, secondSequence, way, x, y, firstResultSeq, secondResultSeq){
+	this.firstSequence = firstSequence;
+	this.secondSequence = secondSequence;
+	this.way = way;
+	this.x = x;
+	this.y = y;
+	this.firstResultSeq = firstResultSeq;
+	this.secondResultSeq = secondResultSeq;
+};
 
