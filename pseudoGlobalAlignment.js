@@ -82,13 +82,3 @@ var stringComparisionForPseudo = function(result){
 	}
 	return innerText;
 };
-var prepareStringForReturnWay = function(template, startPoint, finishPoint, templateResult, resultSeq){
-	while(finishPoint < startPoint){
-		console.log("inFunction");
-		resultSeq += '_' + resultSeq;
-		templateResult += template[startPoint - 1] + templateResult;
-		startPoint--;
-	}
-	console.log(resultSeq);
-	console.log(templateResult)
-};
