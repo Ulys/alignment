@@ -200,7 +200,7 @@ var findReturnWay = function(data){
 		if (data.way[data.x + 1][data.y + 1] == 'up'){
 			data.firstResultSeq = '_' + data.firstResultSeq;
 			if ( data.y >= 1){
-				data.secondResultSeq = data.secondSequence[y - 1] + data.secondResultSeq;
+				data.secondResultSeq = data.secondSequence[data.y - 1] + data.secondResultSeq;
 				data.y -= 1;
 			}else
 				data.secondResultSeq = "_" + data.secondResultSeq;
