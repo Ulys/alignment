@@ -2,8 +2,6 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 	
 	var table = initializeTable (firstSequence, secondSequence);
 	var way = initializeTable (firstSequence, secondSequence);
-	
-	//Ініціюємо перший рядок і стовпець матриць
 	for (var i = 1; i < firstSequence.length + 2; i++) {
 		for (var j = 1; j < secondSequence.length + 2; j++) {
 			if (i == 1) {
@@ -16,20 +14,17 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 			}; 
 		};
 	};
-	
-	//Розраховуємо матрицю ваг-префіксів
 	for (var i = 2; i < firstSequence.length+2; i++) {
 		for (var j = 2; j < secondSequence.length+2; j++) {
 			var up = table[i-1][j]-2;
-			if (firstSequence[i - 2]== secondSequence[j- 2]) {
+			if (firstSequence[i - 2] == secondSequence[j- 2]) {
 				var diag = table[i-1][j-1]+1
 			} 
 			else {
 				var diag = table[i-1][j-1]-1
 			};
 			var left = table[i][j-1]-2;
-			table[i][j] = Math.max(up,diag,left);
-	       //Паралельно заповнимо матрицю шляху       
+			table[i][j] = Math.max(up,diag,left);     
 		    if (table[i][j] == up) {
 		    	way[i][j] = 'up';
 		    }
@@ -41,8 +36,6 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 		    }	
 		}
 	};        		
-	
-	// Побудова вирівнювання
 	var startPoint = findStartPoints(table); 
 	var resultsStrings = [];
 	for(var i = 0; i < startPoint.length; i++){
@@ -63,37 +56,8 @@ var doPseudoGlobalAlignment = function(firstSequence, secondSequence, outStructu
 				secondResultSeq = secondSequence[tempY - 1] + secondResultSeq;
 				tempY--;
 			}
-			while (x >= 1 || y >= 1){
-				if (way[x + 1][y + 1] == 'up'){
-					firstResultSeq = '_' + firstResultSeq;
-					if ( y >= 1){
-						secondResultSeq = secondSequence[y - 1] + secondResultSeq;
-						y -= 1;
-					}else
-						secondResultSeq = "_" + secondResultSeq;
-				} else {
-					if (way[x + 1][y + 1] == 'left'){
-						secondResultSeq = '_' + secondResultSeq;
-						if (x >= 1){
-							firstResultSeq = firstSequence[x - 1] + firstResultSeq;
-							x -= 1;
-						} else
-							firstResultSeq = '_' + firstResultSeq;
-					} else {
-						if (y >= 1){
-							secondResultSeq = secondSequence[y - 1] + secondResultSeq;
-							y -= 1;
-						}else
-							secondResultSeq = "_" + secondResultSeq;
-						if (x >= 1){
-							firstResultSeq = firstSequence[x - 1] + firstResultSeq;
-							x -= 1;
-						} else
-							firstResultSeq = '_' + firstResultSeq;
-					}
-				}
-			}
-			resultsStrings.push(new createPairStrings(firstResultSeq, secondResultSeq));
+			var data = new createStructureForReturnWay(firstSequence, secondSequence, way, startPoint[i][j].i, startPoint[i][j].j, firstResultSeq, secondResultSeq);
+			resultsStrings.push(findReturnWay(data));
 		}
 	}
 	var resultStructure = new createOutputStrucutre(table, way, stringComparisionForPseudo(resultsStrings));
@@ -103,18 +67,28 @@ var stringComparisionForPseudo = function(result){
 	var innerText = '';
 	for (var i = 0; i < result.length; i++){
 		innerText += "<tr>";
-		for(var j = 0; j < result[i].resultSeq1.length; j++){
+		for(var j = 0; j < result[i].sequence1.length; j++){
 			innerText +="<td>";
-			innerText += result[i].resultSeq1[j];
+			innerText += result[i].sequence1[j];
 			innerText +="</td>";
 		}
 		innerText += "</tr><tr><td></td></tr><tr>";
-		for(var j = 0; j < result[i].resultSeq2.length; j++){
+		for(var j = 0; j < result[i].sequence2.length; j++){
 			innerText +="<td>";
-			innerText += result[i].resultSeq2[j];
+			innerText += result[i].sequence2[j];
 			innerText +="</td>";
 		}
 		innerText += "</tr>";
 	}
 	return innerText;
+};
+var prepareStringForReturnWay = function(template, startPoint, finishPoint, templateResult, resultSeq){
+	while(finishPoint < startPoint){
+		console.log("inFunction");
+		resultSeq += '_' + resultSeq;
+		templateResult += template[startPoint - 1] + templateResult;
+		startPoint--;
+	}
+	console.log(resultSeq);
+	console.log(templateResult)
 };

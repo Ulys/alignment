@@ -1,37 +1,31 @@
 //Local Alignment
 var doLocalAlignment = function (firstSequence, secondSequence, outStructure) { 
-	
 	if (firstSequence.length < secondSequence.length) {
 		var tempSequence = firstSequence;
 		firstSequence = secondSequence;
 		secondSequence = tempSequence;
 	}
-
 	var table = initializeTable(firstSequence, secondSequence);
 	var way   = initializeTable(firstSequence, secondSequence);	
 	var resultTable = [];
-
 	for (i = 2; i < firstSequence.length + 2; i++){
 		table[i - 1][1] = 0;
 		way[i - 1][1]   = 0;
 	}
-
 	for (j = 2; j < secondSequence.length + 2; j++){
 		table[1][j - 1] = 0;
 		way[1][j - 1]   = 0;
 	}
-
 	table[1][1] = 0;
 	way[1][1] = 0;
-
 	for (i = 2; i < firstSequence.length + 2; i++){
 		for (j = 2; j < secondSequence.length + 2; j++){
 			var up = table[i][j - 1] - 2;
 			(firstSequence[i - 2] == secondSequence[j - 2]) ? D = 1 :  D = (-1);
 			var diag = table[i - 1][j - 1] + D;
 			var left = table[i - 1][j] - 2;
-			table[i][j] = Math.max(up, left, diag);			
-			if (table[i][j] == diag)
+			table[i][j] = Math.max(0, up, left, diag);			
+			if (table[i][j] == diag || table[i][j] == 0)
 				way[i][j] = 'diag';
 			if (table[i][j] == left)
 				way[i][j] = 'left';
@@ -39,14 +33,10 @@ var doLocalAlignment = function (firstSequence, secondSequence, outStructure) {
 				way[i][j] = 'up';
 		}
 	}
-	
 	var temporaryResult = countTemporaryResult(firstSequence, secondSequence);
 	var finalResult = findResult(temporaryResult, countMaxLength(temporaryResult));
-	var beginPoint = findHomolgyStartPoint(finalResult, firstSequence);
-	var readyForOutPut = prepareForOutput(finalResult, beginPoint);
-	
-	var resultStructure = new createOutputStrucutre(table, way, stringComparision(firstSequence, readyForOutPut));
-	showAlignmentResults(outStructure, resultStructure);
+	var readyForOutPut = prepareForOutput(finalResult, findHomolgyStartPoint(finalResult, firstSequence));
+	showAlignmentResults(outStructure, new createOutputStrucutre(table, way, stringComparision(firstSequence, readyForOutPut)));
 }
 var countMaxLength = function(result){
 	var maxLength = 0;
