@@ -1,0 +1,96 @@
+<html lang = 'ru'>
+	<head>
+		<meta charset="utf-8">
+		<title>Порівняння послідовностей</title>
+		<link rel = "stylesheet"  href = "formstyle.css" media="all">
+		<link rel = "stylesheet"  href = "mobile.css" media="all">
+		<link rel="icon" href="icoImage.ico" type="image/ico">
+	</head>
+
+	<body>
+
+		<div id="title">
+			<h1>DNA Alignment</h1>
+			<h3>First Well-Functioning and Terrific Team Project by BM-31ms ;-)</h3>
+		</div>
+
+		<div id="mainBlock" class="all">
+			<div class = "tab">
+				<ul class="tabs">
+					<li><a href="#alignment">Вирівнювання</a></li>
+					<!-- <li><a href="#general">Головна</a></li> -->
+				</ul><br>
+<!-- 
+	        	<div id = "general">
+					<caption>The coolest I've ever seen</caption>
+				</div>
+	         -->	
+	        	<div id = "alignment">
+					<div class = "fieldset Input">
+						
+						<div class = "inputBlock">
+							<p>Введіть першу послідовність</p>
+							<input id="firstSequence" type="text" maxlength = "20">
+							<p>Введіть другу послідовність</p>
+							<input id="secondSequence" type="text" maxlength = "20">
+						</div>
+						<div class = "inputBlock">
+							<p>Оберіть алгоритм вирівнювання</p>
+							<select>
+		  						<option selected disabled name="">Алгоритм</option>
+		  						<option value="global">Глобальне вирівнювання</option>
+		  						<option value="pseudo">Псевдоглобальне вирівнювання</option>
+		  						<option value="local">Локальне вирівнювання</option>
+							</select><br>
+						</div>
+						<button id="showResults">OK</button>
+					</div>
+
+					<div class = "ChangeLight">
+						<div class = "fieldset Result" >
+							<h2>Результат порівняння</h2>
+							<table id = "resultString"></table>
+							<button id="click">Детальніше</button>
+						</div>		
+
+						<div class = "fieldset Matrix" >
+							<h2>Матриці ваг префіксів та шляху
+								<span class='tip'><a tabindex="1"><em>?</em></a>
+									<span class='answer'>
+										Перша матриця - матриця ваг-префіксів, кожна ячейка якої містить вагу вирівнювання підпослідовностей. 
+										<br>
+										<br>
+										Друга матриця - матриця шляху, кожний елемент якої  вказує на елемент з якого отримано значення відповідної ячейки матриці ваг-префіксів. 
+									</span>
+								</span> 
+							</h2>
+							<table class = "responsive" id = "weight"></table> <br>
+							<table class = "responsive" id = "way"></table>
+						</div>	<br>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="empty"></div>
+		
+		<footer>BM-31ms</footer>
+		
+
+		<!-- scripts -->
+		<script type = "text/javascript" src = "jquery-2.0.2.min.js"></script>
+		<script type = "text/javascript" src = "jquery-ui.js"></script>
+		<script type = "text/javascript" src = "globalAlignment.js"></script>
+		<script type = "text/javascript" src = "pseudoGlobalAlignment.js"></script>
+		<script type = "text/javascript" src = "localAlignment.js"></script>
+		<script type = "text/javascript" src = "structures.js"></script>
+		<script type = "text/javascript" src = "responsive-tables.js"></script>
+		<script type = "text/javascript" src = "scripts.js"></script>
+
+
+	</body>
+</html>
+
+
+				
