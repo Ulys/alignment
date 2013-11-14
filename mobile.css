@@ -1,6 +1,6 @@
 /* Mobile */
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 767px) {
     
     #mainBlock { width: 95%; }
 
@@ -18,11 +18,12 @@
     .responsive td, .responsive th {padding: 3px; width: 28px;}
     
     .pinned { position: absolute; left: 0; top: 0; background: #fff; width: 30px; overflow: hidden; overflow-x: scroll; border-right: 1px solid #ccc; border-left: 1px solid #ccc; }
-    .pinned table { border-right: none; border-left: none; width: 100%; }
-    .pinned table th, .pinned table td { white-space: nowrap; }
+    .pinned table { border-right: none; border-left: none; width: 100%; font-family: calibri; border-collapse: collapse;}
+    .pinned table th, .pinned table td { white-space: nowrap; border: 1px solid #ccc;}
     .pinned td:last-child { border-bottom: 0; }
+    .pinned table th { background-color: #DCDDE3;}
     
-    div.table-wrapper { position: relative; margin-bottom: 20px; overflow: hidden; border-right: 1px solid #ccc; width: auto;}
+    div.table-wrapper { position: relative; margin: 10px 10px; overflow: hidden; border-right: 1px solid #ccc; width: auto;}
     div.table-wrapper div.scrollable { margin-left: 30px; max-width: auto;} 
     div.table-wrapper div.scrollable { overflow: scroll; overflow-y: hidden; }
     div.table-wrapper div.scrollable table.responsive { width: 100%; }

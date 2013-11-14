@@ -15,7 +15,7 @@ html, body {
     src: url(Quark.otf);
 }
 
-@media only screen and (min-width: 980px) {
+@media only screen and (min-width: 767px) {
     #mainBlock {
         width: 80%;    }
 
