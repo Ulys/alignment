@@ -10,35 +10,54 @@ html, body {
     src: url(Palo_Alto_Regular.ttf);
 }
 
-@font-face {
+@font-face { 
     font-family: Quark;
     src: url(Quark.otf);
 }
 
 @media only screen and (min-width: 767px) {
-    #mainBlock {
-        width: 80%;    }
+    #mainBlock { width: 80%; }
 
-    .inputBlock {
-        display: inline-block;
-        width: 45%;
-        vertical-align: top;
-        position: relative;    }
+    .inputBlock { display: inline-block; 
+        width: 45%; 
+        vertical-align: top; 
+        position: relative;
+    }
 
-    button {
-        font-size:14px;
-        height: 30px;
-        width: 100px;
-        margin-left: 80%;    }
+    button { font-size:14px; 
+        height: 30px; 
+        width: 100px; 
+        margin-left: 80%;
+    }
 
-    h3 { 
-        padding-left: 50%;    }
+    h3 { padding-left: 50%; }
 
-    p, h2 {
-        font-size: 18px;    }
+    p, h2 { font-size: 18px; }
 
-    .responsive {
-        width: 90%;  }
+    .responsive { width: 90%;  }
+
+}
+
+@media only screen and (max-width: 767px) {
+    
+    #mainBlock { width: 95%; }
+
+    .inputBlock { width: 95%; }
+
+    button { font-size:75%; 
+        height: 25px; 
+        width: 80px; 
+        margin-top: 15px; 
+        position: relative; 
+        left: 30px;
+    }  
+
+    h3 { padding: 0; text-align: center; }
+
+    p, h2 { font-size: 16px; } 
+
+    #resultString { font-size: 16px;}
+
 }
 
 #mainBlock {
@@ -62,9 +81,7 @@ html, body {
 	height: 25px;
 }
 
-#empty {
-  	height: 50px;
-}
+#empty { height: 50px; }
 
 h1 {
   	font-family: Palo_Alto_Regular;
@@ -96,21 +113,20 @@ h3 {
 }
 
 
-.fieldset:hover {
-    opacity: 1 !important;
-    transition: opacity 1s;
-}
+.fieldset:hover { opacity: 1 !important; transition: opacity 1s; }
 
-.ChangeLight:hover .fieldset {
-    opacity: 0.5;
-    transition: opacity 1s;
-}
+.ChangeLight:hover .fieldset { opacity: 0.5; transition: opacity 1s; }
 
 input {
   	width: 90%;
   	margin-left: 30px;
   	border: 1 solid #ccc2a6;
   	height: 25px;
+}
+
+input::-ms-clear {
+    background:#ABB2B6;
+    color: #1A0303;
 }
 
 footer {
@@ -133,7 +149,12 @@ p, h2 {
   margin-bottom: 5px;
 }
 
-.responsive {
+.table-wrap {
+  margin: 10px 20px;
+  overflow-x: auto;
+}
+
+.resultMatrix {
   border-collapse: collapse;
   table-layout: fixed;
   border: 1px solid #ccc2a6;
@@ -141,15 +162,13 @@ p, h2 {
   font-family: calibri;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
 }
 
-.responsive th { font-weight: bold; }
-.responsive td, .responsive th { text-align: center; }
-
-.responsive tr:nth-child(2n+1) {
-    background-color: #DCDDE3;
-}
+.resultMatrix th { font-weight: bold; color: #242A3D; }
+.resultMatrix td, .resultMatrix th { text-align: center; min-width: 30px; padding: 2px 5px;}
+.resultMatrix tr:nth-child(2n+1) { background-color: #DCDDE3; }
+.resultMatrix td:first-of-type { border-left: 1px solid #ccc2a6; }
+.resultMatrix tr:nth-child(1) { border-bottom: 1px solid #ccc2a6; }
 
 #resultString {
   margin-top: 10px;
@@ -192,20 +211,11 @@ ul.tabs li {
   	margin-left: 50px;
 }
 
-a {
-  	color: #c6d8e3;
-  	text-decoration: none;
-}
+a { color: #c6d8e3; text-decoration: none; }
 
-a:hover {
-   	text-shadow:0 1px 0 #ccc2a6;
-   	cursor: pointer;
-}
+a:hover { text-shadow:0 1px 0 #ccc2a6; cursor: pointer; }
 
-.tip {
-  display: inline-block;
-  position: relative;
-}
+.tip { display: inline-block; position: relative; }
 
 .tip em,
 .linktip em {
@@ -229,7 +239,7 @@ a:hover {
   padding: 4px;
 }
 
-.answer>b {
+.answer>b { 
   top:0;
   right:0;
 }
@@ -271,7 +281,5 @@ a:hover {
   left: 22px; 
   padding: 5px 7px 7px 20px;
 }
-.a-top {
-  bottom: -10px; 
-}
+.a-top { bottom: -10px; }
 

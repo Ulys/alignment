@@ -3,7 +3,6 @@
 		<meta charset="utf-8">
 		<title>Порівняння послідовностей</title>
 		<link rel = "stylesheet"  href = "formstyle.css" media="all">
-		<link rel = "stylesheet"  href = "mobile.css" media="all">
 		<link rel="icon" href="icoImage.ico" type="image/ico">
 	</head>
 
@@ -30,9 +29,9 @@
 						
 						<div class = "inputBlock">
 							<p>Введіть першу послідовність</p>
-							<input id="firstSequence" type="text" maxlength = "20">
+							<input id="firstSequence" type="text">
 							<p>Введіть другу послідовність</p>
-							<input id="secondSequence" type="text" maxlength = "20">
+							<input id="secondSequence" type="text">
 						</div>
 						<div class = "inputBlock">
 							<p>Оберіть алгоритм вирівнювання</p>
@@ -65,8 +64,12 @@
 									</span>
 								</span> 
 							</h2>
-							<table class = "responsive" id = "weight"></table> <br>
-							<table class = "responsive" id = "way"></table>
+							<div class = "table-wrap">
+								<table class = "resultMatrix" id = "weight"></table>
+							</div> <br>
+							<div class = "table-wrap">
+								<table class = "resultMatrix" id = "way"></table>
+							</div>
 						</div>	<br>
 					</div>
 				</div>
@@ -86,7 +89,6 @@
 		<script type = "text/javascript" src = "pseudoGlobalAlignment.js"></script>
 		<script type = "text/javascript" src = "localAlignment.js"></script>
 		<script type = "text/javascript" src = "structures.js"></script>
-		<script type = "text/javascript" src = "responsive-tables.js"></script>
 		<script type = "text/javascript" src = "scripts.js"></script>
 
 
